@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:meme_maker/counter/counter.dart';
+import 'package:meme_maker/features/counter/counter.dart';
 import 'package:meme_maker/l10n/l10n.dart';
 
 class App extends StatelessWidget {
