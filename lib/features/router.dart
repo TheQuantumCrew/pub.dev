@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import 'package:meme_maker/features/splash/view/splash_page.dart';
+import 'package:pub_dev/features/splash/view/splash_page.dart';
 
 part 'router.g.dart';
 
