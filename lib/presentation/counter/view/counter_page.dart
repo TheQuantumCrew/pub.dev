@@ -1,23 +1,18 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:pub_dev/features/counter/counter.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:pub_dev/l10n/l10n.dart';
+import 'package:pub_dev/presentation/counter/counter.dart';
 
-class CounterPage extends StatelessWidget {
+@RoutePage()
+class CounterPage extends ConsumerStatefulWidget {
   const CounterPage({super.key});
 
   @override
-  Widget build(BuildContext context) {
-    return BlocProvider(
-      create: (_) => CounterCubit(),
-      child: const CounterView(),
-    );
-  }
+  ConsumerState<CounterPage> createState() => _CounterPageState();
 }
 
-class CounterView extends StatelessWidget {
-  const CounterView({super.key});
-
+class _CounterPageState extends ConsumerState<CounterPage> {
   @override
   Widget build(BuildContext context) {
     final l10n = context.l10n;
@@ -29,12 +24,14 @@ class CounterView extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.end,
         children: [
           FloatingActionButton(
-            onPressed: () => context.read<CounterCubit>().increment(),
+            onPressed: () =>
+                ref.read(counterStateNotifierProvider.notifier).increment(),
             child: const Icon(Icons.add),
           ),
           const SizedBox(height: 8),
           FloatingActionButton(
-            onPressed: () => context.read<CounterCubit>().decrement(),
+            onPressed: () =>
+                ref.read(counterStateNotifierProvider.notifier).decrement(),
             child: const Icon(Icons.remove),
           ),
         ],
@@ -43,13 +40,13 @@ class CounterView extends StatelessWidget {
   }
 }
 
-class CounterText extends StatelessWidget {
+class CounterText extends ConsumerWidget {
   const CounterText({super.key});
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
     final theme = Theme.of(context);
-    final count = context.select((CounterCubit cubit) => cubit.state);
-    return Text('$count', style: theme.textTheme.displayLarge);
+    final counter = ref.watch(counterStateNotifierProvider);
+    return Text('$counter', style: theme.textTheme.displayLarge);
   }
 }

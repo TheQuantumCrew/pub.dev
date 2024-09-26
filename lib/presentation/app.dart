@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:pub_dev/features/counter/counter.dart';
 import 'package:pub_dev/l10n/l10n.dart';
+import 'package:pub_dev/presentation/counter/counter.dart';
 
 class App extends StatelessWidget {
   const App({super.key});
