@@ -26,12 +26,14 @@ class _CounterPageState extends ConsumerState<CounterPage> {
           FloatingActionButton(
             onPressed: () =>
                 ref.read(counterStateNotifierProvider.notifier).increment(),
+            heroTag: null,
             child: const Icon(Icons.add),
           ),
           const SizedBox(height: 8),
           FloatingActionButton(
             onPressed: () =>
                 ref.read(counterStateNotifierProvider.notifier).decrement(),
+            heroTag: null,
             child: const Icon(Icons.remove),
           ),
         ],
