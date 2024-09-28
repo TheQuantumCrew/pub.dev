@@ -10,7 +10,13 @@ class App extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp.router(
-      routerConfig: _router.config(),
+      routerConfig: _router.config(
+        navigatorObservers: () {
+          return [
+            AppNavigationObserver(),
+          ];
+        },
+      ),
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
         appBarTheme: AppBarTheme(
