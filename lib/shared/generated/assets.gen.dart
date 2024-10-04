@@ -53,6 +53,25 @@ class $AssetsFontsGen {
       ];
 }
 
+class $AssetsIconsGen {
+  const $AssetsIconsGen();
+
+  /// File path: assets/icons/ic_dart_green.png
+  AssetGenImage get icDartGreen =>
+      const AssetGenImage('assets/icons/ic_dart_green.png');
+
+  /// File path: assets/icons/ic_dart_original.png
+  AssetGenImage get icDartOriginal =>
+      const AssetGenImage('assets/icons/ic_dart_original.png');
+
+  /// File path: assets/icons/ic_flutter.png
+  AssetGenImage get icFlutter =>
+      const AssetGenImage('assets/icons/ic_flutter.png');
+
+  /// List of all assets
+  List<AssetGenImage> get values => [icDartGreen, icDartOriginal, icFlutter];
+}
+
 class $AssetsImagesGen {
   const $AssetsImagesGen();
 
@@ -68,6 +87,7 @@ class Assets {
   Assets._();
 
   static const $AssetsFontsGen fonts = $AssetsFontsGen();
+  static const $AssetsIconsGen icons = $AssetsIconsGen();
   static const $AssetsImagesGen images = $AssetsImagesGen();
 }
 

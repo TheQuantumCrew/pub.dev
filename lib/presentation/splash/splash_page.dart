@@ -15,9 +15,10 @@ class SplashPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return _SplashView(
       onSplashCompleted: () {
-        context
-          ..router.popUntilRoot()
-          ..pushRoute(const MainRoute());
+        context.router.pushAndPopUntil(
+          const MainRoute(),
+          predicate: (route) => false,
+        );
       },
     );
   }
